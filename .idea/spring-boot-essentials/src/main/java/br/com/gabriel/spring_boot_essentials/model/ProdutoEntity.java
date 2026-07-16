@@ -1,4 +1,4 @@
-package br.com.gabriel.spring_boot_essentials.database.model;
+package br.com.gabriel.spring_boot_essentials.model;
 
 import lombok.*;
 
