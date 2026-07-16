@@ -1,5 +1,6 @@
 package br.com.gabriel.spring_boot_essentials.service;
 
+import br.com.gabriel.spring_boot_essentials.dto.ProdutoDTO;
 import org.springframework.stereotype.Service;
 
 import br.com.gabriel.spring_boot_essentials.model.ProdutoEntity;
@@ -40,5 +41,25 @@ public class ProdutoService {
     //Método para listar todos os produtos
     public List<ProdutoEntity> findAll() {
         return new ArrayList<>(PRODUTOS);
+    }
+
+    public ProdutoEntity createProduto(ProdutoDTO produtoDto){
+
+        //Função para incrementar o id na criação do produto
+        Integer identificador = PRODUTOS.stream()
+                .mapToInt(ProdutoEntity::getId)
+                .max()
+                .orElse(0) + 1;
+
+        //Cria novo produto e passa seus fields preenchidos para o builder
+        ProdutoEntity novoProduto = ProdutoEntity.builder()
+                .nome(produtoDto.getNome())
+                .preco(produtoDto.getPreco())
+                .quantidade(produtoDto.getQuantidade())
+                .build();
+
+        PRODUTOS.add(novoProduto);
+
+        return novoProduto;
     }
 }
