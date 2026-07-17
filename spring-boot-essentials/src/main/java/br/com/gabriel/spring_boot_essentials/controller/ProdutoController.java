@@ -1,13 +1,11 @@
 package br.com.gabriel.spring_boot_essentials.controller;
 
 import br.com.gabriel.spring_boot_essentials.model.ProdutoEntity;
+import br.com.gabriel.spring_boot_essentials.dto.ProdutoDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import br.com.gabriel.spring_boot_essentials.service.ProdutoService;
 
 import java.util.List;
@@ -25,5 +23,11 @@ public class ProdutoController {
     @ResponseStatus(HttpStatus.OK)
     public List<ProdutoEntity> findAll(){
         return produtoService.findAll();
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public ProdutoEntity createProduct(@RequestBody ProdutoDTO produtoDto) {
+        return produtoService.createProduto(produtoDto);
     }
 }
