@@ -19,15 +19,25 @@ public class ProdutoController {
     //Injetando a classe que vai fornecer os métodos
     private final ProdutoService produtoService;
 
+    //Método Get para puxar todos os itens da lista
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<ProdutoEntity> findAll(){
         return produtoService.findAll();
     }
 
+    //Método Post para adicional novo item na lista
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ProdutoEntity createProduct(@RequestBody ProdutoDTO produtoDto) {
+    public ProdutoEntity createProduto(@RequestBody ProdutoDTO produtoDto) {
         return produtoService.createProduto(produtoDto);
+    }
+
+    //Método Put para atualizar a lista de itens
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ProdutoEntity updateProduto(@PathVariable Integer id,
+                                       @RequestBody ProdutoDTO produtoDto){
+        return produtoService.updateProduto(produtoDto, id);
     }
 }
