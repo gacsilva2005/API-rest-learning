@@ -51,7 +51,7 @@ public class ProdutoService {
                 .max()
                 .orElse(0) + 1;
 
-        //Cria novo produto e passa seus fields preenchidos para o builder
+        //Passa os fields do DTO e cria uma nova entidade
         ProdutoEntity novoProduto = ProdutoEntity.builder()
                 .nome(produtoDto.getNome())
                 .preco(produtoDto.getPreco())
