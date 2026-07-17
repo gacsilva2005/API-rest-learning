@@ -62,4 +62,25 @@ public class ProdutoService {
 
         return novoProduto;
     }
+
+    public ProdutoEntity updateProduto(ProdutoDTO produtoDTO, Integer id){
+
+        //Procura o produto filtrando pelo ID
+        ProdutoEntity produto = PRODUTOS.stream()
+                .filter(p -> p.getId().equals(id))
+                .findAny()
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+
+        //Atualiza os fields do produto encotrado pelo ID
+        produto.setNome(produto.getNome());
+        produto.setPreco(produto.getPreco());
+        produto.setQuantidade(produto.getQuantidade());
+
+        return produto;
+    }
+
+    //Método para remover produto da lista se existir um ID igual já adicionado
+    public void deleteProduto(Integer id) {
+        PRODUTOS.removeIf(p -> p.getId().equals(id));
+    }
 }
