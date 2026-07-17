@@ -40,4 +40,11 @@ public class ProdutoController {
                                        @RequestBody ProdutoDTO produtoDto){
         return produtoService.updateProduto(produtoDto, id);
     }
+
+    //Método Delete para excluir um item pelo ID
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteProduct(@PathVariable Integer id) {
+        produtoService.deleteProduto(id);
+    }
 }
