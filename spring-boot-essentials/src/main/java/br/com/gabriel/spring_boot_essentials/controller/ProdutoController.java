@@ -1,5 +1,6 @@
 package br.com.gabriel.spring_boot_essentials.controller;
 
+import br.com.gabriel.spring_boot_essentials.exception.NotFoundException;
 import br.com.gabriel.spring_boot_essentials.model.ProdutoEntity;
 import br.com.gabriel.spring_boot_essentials.dto.ProdutoDTO;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +38,7 @@ public class ProdutoController {
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public ProdutoEntity updateProduto(@PathVariable Integer id,
-                                       @RequestBody ProdutoDTO produtoDto){
+                                       @RequestBody ProdutoDTO produtoDto) throws NotFoundException {
         return produtoService.updateProduto(produtoDto, id);
     }
 

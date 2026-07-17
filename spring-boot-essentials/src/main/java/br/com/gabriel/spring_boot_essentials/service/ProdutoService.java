@@ -1,6 +1,7 @@
 package br.com.gabriel.spring_boot_essentials.service;
 
 import br.com.gabriel.spring_boot_essentials.dto.ProdutoDTO;
+import br.com.gabriel.spring_boot_essentials.exception.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import br.com.gabriel.spring_boot_essentials.model.ProdutoEntity;
@@ -64,13 +65,13 @@ public class ProdutoService {
         return novoProduto;
     }
 
-    public ProdutoEntity updateProduto(ProdutoDTO produtoDTO, Integer id){
+    public ProdutoEntity updateProduto(ProdutoDTO produtoDTO, Integer id) throws NotFoundException {
 
         //Procura o produto filtrando pelo ID
         ProdutoEntity produto = PRODUTOS.stream()
                 .filter(p -> p.getId().equals(id))
                 .findAny()
-                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+                .orElseThrow(() -> new NotFoundException("Produto não encontrado"));
 
         //Atualiza os fields do produto encotrado pelo ID
         produto.setNome(produto.getNome());
