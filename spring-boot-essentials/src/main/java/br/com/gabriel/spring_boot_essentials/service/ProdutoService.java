@@ -78,4 +78,9 @@ public class ProdutoService {
 
         return produto;
     }
+
+    //Método para remover produto da lista se existir um ID igual já adicionado
+    public void deleteProduto(Integer id) {
+        PRODUTOS.removeIf(p -> p.getId().equals(id));
+    }
 }
