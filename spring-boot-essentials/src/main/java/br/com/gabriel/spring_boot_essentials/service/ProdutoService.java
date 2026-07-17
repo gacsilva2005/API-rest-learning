@@ -53,6 +53,7 @@ public class ProdutoService {
 
         //Passa os fields do DTO e cria uma nova entidade
         ProdutoEntity novoProduto = ProdutoEntity.builder()
+                .id(identificador)
                 .nome(produtoDto.getNome())
                 .preco(produtoDto.getPreco())
                 .quantidade(produtoDto.getQuantidade())
