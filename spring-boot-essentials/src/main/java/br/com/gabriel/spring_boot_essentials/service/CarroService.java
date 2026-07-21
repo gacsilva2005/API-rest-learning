@@ -87,4 +87,10 @@ public class CarroService {
         //retorna a entidade atualizada
         return carro;
     }
+
+    //Método para remover um carro da lista se existir um ID igual já adicionado
+    public void deleteCarro(Integer id) {
+        //Remove da lista de acordo com o id passado
+        CARROS.removeIf(p -> p.getId().equals(id));
+    }
 }
