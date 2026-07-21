@@ -43,4 +43,11 @@ public class CarroController {
                                        @RequestBody CarroDTO carroDTO) throws Exception {
         return carroService.updateCarro(carroDTO, id);
     }
+
+    //Método Delete para excluir um item pelo ID
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteCarro(@PathVariable Integer id) {
+        carroService.deleteCarro(id);
+    }
 }
