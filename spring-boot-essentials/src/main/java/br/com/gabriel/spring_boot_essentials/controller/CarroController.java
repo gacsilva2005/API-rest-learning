@@ -2,6 +2,7 @@ package br.com.gabriel.spring_boot_essentials.controller;
 
 import br.com.gabriel.spring_boot_essentials.dto.CarroDTO;
 import br.com.gabriel.spring_boot_essentials.dto.ProdutoDTO;
+import br.com.gabriel.spring_boot_essentials.exception.NotFoundException;
 import br.com.gabriel.spring_boot_essentials.model.CarroEntity;
 import br.com.gabriel.spring_boot_essentials.model.ProdutoEntity;
 import br.com.gabriel.spring_boot_essentials.service.CarroService;
@@ -33,5 +34,13 @@ public class CarroController {
     @ResponseStatus(HttpStatus.CREATED)
     public CarroEntity createCarro(@RequestBody CarroDTO carroDTO) {
         return carroService.createCarro(carroDTO);
+    }
+
+    //Método Put para atualizar a lista de itens
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public CarroEntity updateCarro(@PathVariable Integer id,
+                                       @RequestBody CarroDTO carroDTO) throws Exception {
+        return carroService.updateCarro(carroDTO, id);
     }
 }
