@@ -1,6 +1,6 @@
 # Spring Boot Essentials - Produto API
 
-  <p align="center">
+<p align="center">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" width="40" alt="Java"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" width="40" alt="Spring Boot"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/maven/maven-original.svg" width="40" alt="Maven"/>
@@ -40,13 +40,15 @@ API REST desenvolvida com **Spring Boot** para gerenciamento de produtos. O proj
 ```text
 src
  └── main
-     ├── controller
-     ├── dto
-     ├── entity
-     ├── exception
-     ├── handler
-     ├── service
-     └── SpringBootEssentialsApplication
+     └── java
+         └── br.com.gabriel.spring_boot_essentials
+             ├── controller
+             ├── dto
+             ├── entity
+             ├── exception
+             ├── handler
+             ├── service
+             └── SpringBootEssentialsApplication.java
 ```
 
 ---
@@ -56,22 +58,22 @@ src
 ### Clone o projeto
 
 ```bash
-git clone https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
+git clone https://github.com/gacsilva2005/API-rest-learning
 ```
 
 ### Entre na pasta
 
 ```bash
-cd SEU-REPOSITORIO
+cd spring-boot-essentials
 ```
 
 ### Execute
 
-```bash
-./mvnw spring-boot:run
-```
+Execute a classe principal da aplicação pela IDE.
 
-Ou execute a classe principal da aplicação pela IDE.
+```bash
+SpringBootEssentialsApplication.java
+```
 
 ---
 
