@@ -2,6 +2,7 @@ package br.com.gabriel.spring_boot_essentials.service;
 
 import br.com.gabriel.spring_boot_essentials.dto.CarroDTO;
 import br.com.gabriel.spring_boot_essentials.dto.ProdutoDTO;
+import br.com.gabriel.spring_boot_essentials.exception.NotFoundException;
 import br.com.gabriel.spring_boot_essentials.model.CarroEntity;
 import br.com.gabriel.spring_boot_essentials.model.ProdutoEntity;
 import org.springframework.stereotype.Service;
@@ -68,5 +69,22 @@ public class CarroService {
 
         //retorna o novo carro criado
         return novoCarro;
+    }
+
+    public CarroEntity updateCarro(CarroDTO carroDTO, Integer id) throws Exception {
+
+        //Procura o produto filtrando pelo ID
+        CarroEntity carro = CARROS.stream()//transforma a lista em stream pra filtrar
+                .filter(p -> p.getId().equals(id))//filtra com o id passado
+                .findAny() //pega o que foi encontrado com o ID, se não cai na linha abaixo
+                .orElseThrow(() -> new Exception("Carro não encontrado"));
+
+        //Atualiza os fields do produto encotrado pelo ID
+        carro.setNome(carro.getNome()); //atualiza o campo com o nome passado
+        carro.setPreco(carro.getPreco()); //atualiza o campo com o preco passado
+        carro.setPotencia(carro.getPotencia()); //atualiza o campo com a potencia passada
+
+        //retorna a entidade atualizada
+        return carro;
     }
 }
